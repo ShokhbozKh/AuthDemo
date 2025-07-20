@@ -25,6 +25,8 @@ namespace AuthDemo.Controllers
                 return BadRequest($"Foydalunuvchi bor, { registerDto.FirstName}");
             }
             var passwordHashcode = HashCode.Combine(registerDto.Password);
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password);
+
 
             var newUser = new User
             {
